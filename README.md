@@ -14,7 +14,7 @@ It was originally developed by [b. avianto](https://github.com/avianto/hugo-kier
     - [git submodule method](#git-submodule-method)
     - [independent directory method](#independent-directory-method)
   - [Configuration](#configuration)
-    - [Main Menu](#main-menu)
+    - [Menus](#menus)
     - [Categories & Tags](#categories--tags)
     - [Images](#images)
     - [Code highlight](#code-highlight)
@@ -108,7 +108,7 @@ googleAnalytics = "" #Google Analytics ID
     disableDarkModeCSS = false # disables css style for users using dark-mode
 ```
 
-### Main Menu
+### Menus
 
 To add non-posts related page (eq. About page) to the main menu, adding these lines to the page [front matter](https://gohugo.io/content-management/front-matter/):
 
@@ -138,7 +138,6 @@ menu = "main"
 weight = "10"
 ```
 
-
 YAML:
 
 ```yml
@@ -147,12 +146,43 @@ menu : "main"
 weight : "10"
 ```
 
+Following menus are available:
+
+* `main`, displayed in the navigation bar at the top of the page
+* `footer`, displayed on the lower right, in the footer 
+
 ### Categories & Tags
 
 Pages can include both, either, or neither *Categories* or *Tags*.
 To link to tags use the url `/tags/` (e.g. `https://example.com/tags/`) and `/categories/` for categories.
 
 ### Images
+
+#### Site header
+
+A side header can be added in `config.toml`.
+
+```
+site_logo = "/link/to/image"
+```
+
+It is possible to use full width image as well, using either `/link/to/image#full` (which will affect only this image and
+not the featured images for posts which may override the site header image) or `site_logo_classes = "full-image"` in `config.toml` (which
+will affect all header images, even if a featured image of a post overrides the site logo).
+
+#### Featured images for posts
+
+A featured image for a post which will be shown in list overviews and at the top of the post page can be added in the frontmatter.
+
+```
+images: ["/link/to/image"]
+```
+
+Here, too, it is possible to display the image in full width appending `#full` or `#float` to the URL (see below).
+
+Featured images can override the site logo on the post page, using `replace_site_logo: false` in the frontmatter.
+
+#### Images in text
 
 Kiera supports adding image as `img` tag with standard Markdown:
 
